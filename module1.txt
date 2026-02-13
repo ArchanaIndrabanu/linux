@@ -1,0 +1,66 @@
+1)
+archana@EURLTP-380:~/linux_assignment$ ls -l
+total 0
+-rw-r--r-- 1 archana archana 0 Feb 13 19:21 f1.txt
+archana@EURLTP-380:~/linux_assignment$ chmod ugo=x f1.txt
+archana@EURLTP-380:~/linux_assignment$ ls -l
+total 0
+---x--x--x 1 archana archana 0 Feb 13 19:21 f1.txt
+2)
+archana@EURLTP-380:~/linux_assignment$ ls -l f2.txt
+-rwxrwxrwx 1 archana archana 0 Feb 13 19:27 f2.txt
+archana@EURLTP-380:~/linux_assignment$ chmod g-w f2.txt
+archana@EURLTP-380:~/linux_assignment$ ls -l f2.txt
+-rwxr-xrwx 1 archana archana 0 Feb 13 19:27 f2.txt
+3)
+archana@EURLTP-380:~/linux_assignment$ mkdir dir1
+archana@EURLTP-380:~/linux_assignment$ cd dir1
+archana@EURLTP-380:~/linux_assignment/dir1$ mkdir dir2
+archana@EURLTP-380:~/linux_assignment/dir1$ cd dir2
+archana@EURLTP-380:~/linux_assignment/dir1/dir2$ touch f1.txt
+archana@EURLTP-380:~/linux_assignment/dir1/dir2$ nano f1.txt
+archana@EURLTP-380:~/linux_assignment/dir1/dir2$ cat f1.txt
+archana
+archana@EURLTP-380:~/linux_assignment/dir1/dir2$ cd ..
+archana@EURLTP-380:~/linux_assignment/dir1$ ls -l
+total 4
+drwxr-xr-x 2 archana archana 4096 Feb 13 19:42 dir2
+lrwxrwxrwx 1 archana archana   11 Feb 13 19:41 f1_link.txt -> dir2/f1.txt
+archana@EURLTP-380:~/linux_assignment/dir1$ cat f1_link.txt
+archana
+4)
+archana@EURLTP-380:~/linux_assignment/dir1$ ps ef
+    PID TTY      STAT   TIME COMMAND
+    679 pts/1    S+     0:00 -bash HOME=/home/archana SHELL=/bin/bash USER=archana LOGNAME=archana PATH=/usr/local/sbin:/usr/local/bi
+    597 pts/0    Ss     0:00 -bash HOSTTYPE=x86_64 LANG=C.UTF-8 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/us
+    979 pts/0    R+     0:00  \_ ps ef SHELL=/bin/bash WSL2_GUI_APPS_ENABLED=1 WSL_DISTRO_NAME=Ubuntu-20.04 NAME=EURLTP-380 PWD=/home
+5)
+archana@EURLTP-380:~/linux_assignment/dir1$ touch file1.txt
+archana@EURLTP-380:~/linux_assignment/dir1$ sleep 1
+archana@EURLTP-380:~/linux_assignment/dir1$ touch file2.txt
+archana@EURLTP-380:~/linux_assignment/dir1$ sleep 1
+archana@EURLTP-380:~/linux_assignment/dir1$ touch file3.txt
+archana@EURLTP-380:~/linux_assignment$ ls -lt dir1
+total 4
+-rw-r--r-- 1 archana archana    0 Feb 13 19:54 file3.txt
+-rw-r--r-- 1 archana archana    0 Feb 13 19:54 file2.txt
+-rw-r--r-- 1 archana archana    0 Feb 13 19:53 file1.txt
+drwxr-xr-x 2 archana archana 4096 Feb 13 19:42 dir2
+lrwxrwxrwx 1 archana archana   11 Feb 13 19:41 f1_link.txt -> dir2/f1.txt
+archana@EURLTP-380:~/linux_assignment$ ls -lt dir1 > op.txt
+archana@EURLTP-380:~/linux_assignment$ cat op.txt
+total 4
+-rw-r--r-- 1 archana archana    0 Feb 13 19:54 file3.txt
+-rw-r--r-- 1 archana archana    0 Feb 13 19:54 file2.txt
+-rw-r--r-- 1 archana archana    0 Feb 13 19:53 file1.txt
+drwxr-xr-x 2 archana archana 4096 Feb 13 19:42 dir2
+lrwxrwxrwx 1 archana archana   11 Feb 13 19:41 f1_link.txt -> dir2/f1.txt
+archana@EURLTP-380:~/linux_assignment$ ls -ltr dir1 > op1.txt
+archana@EURLTP-380:~/linux_assignment$ cat op1.txt
+total 4
+lrwxrwxrwx 1 archana archana   11 Feb 13 19:41 f1_link.txt -> dir2/f1.txt
+drwxr-xr-x 2 archana archana 4096 Feb 13 19:42 dir2
+-rw-r--r-- 1 archana archana    0 Feb 13 19:53 file1.txt
+-rw-r--r-- 1 archana archana    0 Feb 13 19:54 file2.txt
+-rw-r--r-- 1 archana archana    0 Feb 13 19:54 file3.txt
+
