@@ -1,0 +1,71 @@
+1)
+archana@EURLTP-380:~/linux_assignment$ find . -type f -size +1M > bigf.txt
+archana@EURLTP-380:~/linux_assignment$ cat bigf.txt
+archana@EURLTP-380:~/linux_assignment$ dd if=/dev/zero of=bigf.txt bs=1M count=2
+2+0 records in
+2+0 records out
+2097152 bytes (2.1 MB, 2.0 MiB) copied, 0.0410363 s, 51.1 MB/s
+archana@EURLTP-380:~/linux_assignment$ find . -type f -size +1M > opt.txt
+archana@EURLTP-380:~/linux_assignment$ cat opt.txt
+./bigf.txt
+2)
+archana@EURLTP-380:~/linux_assignment$ touch config.txt
+archana@EURLTP-380:~/linux_assignment$ nano config.txt
+archana@EURLTP-380:~/linux_assignment$ cat config.txt
+server=localhost
+url=http://localhost:8080
+archana@EURLTP-380:~/linux_assignment$ sed 's/localhost/127.0.0.1/g' config.txt > updated_config.txt
+archana@EURLTP-380:~/linux_assignment$ cat updated_config.txt
+server=127.0.0.1
+url=http://127.0.0.1:8080
+3)
+archana@EURLTP-380:~/linux_assignment$ touch log.txt
+archana@EURLTP-380:~/linux_assignment$ nano log.txt
+archana@EURLTP-380:~/linux_assignment$ grep 'ERROR' log.txt | grep -v 'DEBUG' > filtered_log.txt
+archana@EURLTP-380:~/linux_assignment$ cat filtered_log.txt
+ERROR: Unable to connect to the database.​
+ERROR: Failed to fetch data from API endpoint '/users'.​
+ERROR: Missing required parameter in the request.​
+4)
+archana@EURLTP-380:~/linux_assignment$ ps aux --sort=-%mem
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         289  0.0  0.4 1466916 38912 ?       Ssl  05:52   0:03 /usr/lib/snapd/snapd
+root         353  0.0  0.2 108132 20672 ?        Ssl  05:52   0:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade
+root         286  0.0  0.2  29876 17948 ?        Ss   05:52   0:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-trigge
+root          58  0.0  0.1  52148 15104 ?        S<s  05:52   0:00 /lib/systemd/systemd-journald
+root         300  0.0  0.1 395596 13460 ?        Ssl  05:52   0:00 /usr/lib/udisks2/udisksd
+root         313  0.0  0.1 318812 13144 ?        Ssl  05:52   0:00 /usr/sbin/ModemManager
+systemd+     276  0.0  0.1  24764 12928 ?        Ss   05:52   0:00 /lib/systemd/systemd-resolved
+root           1  0.0  0.1 171280 12416 ?        Ss   05:52   0:02 /sbin/init
+archana      662  0.0  0.1  19084  9472 ?        Ss   05:53   0:00 /lib/systemd/systemd --user
+root         287  0.0  0.1 236448  9076 ?        Ssl  05:52   0:00 /usr/lib/policykit-1/polkitd --no-debug
+root         279  0.0  0.1 241060  8988 ?        Ssl  05:52   0:00 /usr/lib/accountsservice/accounts-daemon
+systemd+      84  0.0  0.0  19084  7808 ?        Ss   05:52   0:00 /lib/systemd/systemd-networkd
+root         296  0.0  0.0  17360  7680 ?        Ss   05:52   0:00 /lib/systemd/systemd-logind
+root          78  0.0  0.0  23328  6016 ?        Ss   05:52   0:00 /lib/systemd/systemd-udevd
+archana      663  0.0  0.0 105460  5112 ?        S    05:53   0:00 (sd-pam)
+archana      597  0.0  0.0  10048  4992 pts/0    Ss   05:53   0:00 -bash
+archana      679  0.0  0.0  10024  4736 pts/1    S+   05:53   0:00 -bash
+message+     280  0.0  0.0   7564  4480 ?        Ss   05:52   0:00 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidf
+syslog       288  0.0  0.0 224352  4480 ?        Ssl  05:52   0:00 /usr/sbin/rsyslogd -n -iNONE
+root         598  0.0  0.0   5704  4096 pts/1    Ss   05:53   0:00 /bin/login -f
+archana     1379  0.0  0.0  10780  3328 pts/0    R+   08:31   0:00 ps aux --sort=-%mem
+root         324  0.0  0.0   8548  2944 ?        Ss   05:52   0:00 /usr/sbin/cron -f
+daemon       330  0.0  0.0   3804  2304 ?        Ss   05:52   0:00 /usr/sbin/atd -f
+root         347  0.0  0.0   7360  2304 hvc0     Ss+  05:52   0:00 /sbin/agetty -o -p -- \u --noclear --keep-baud console 115200,3840
+root           6  0.0  0.0   3148  2056 ?        Sl   05:52   0:00 plan9 --control-socket 7 --log-level 4 --server-fd 8 --pipe-fd 10
+root           2  0.0  0.0   3120  2048 ?        Sl   05:52   0:00 /init
+root         351  0.0  0.0   5836  2048 tty1     Ss+  05:52   0:00 /sbin/agetty -o -p -- \u --noclear tty1 linux
+root         269  0.0  0.0   3924  1696 ?        Ss   05:52   0:04 snapfuse /var/lib/snapd/snaps/snapd_19122.snap /snap/snapd/19122 -
+root         267  0.0  0.0   3832  1536 ?        Ss   05:52   0:00 snapfuse /var/lib/snapd/snaps/lxd_24061.snap /snap/lxd/24061 -o ro
+root         264  0.0  0.0   3764  1468 ?        Ss   05:52   0:00 snapfuse /var/lib/snapd/snaps/core20_1891.snap /snap/core20/1891 -
+root         593  0.0  0.0   3144  1284 ?        S    05:53   0:00 /init
+root         591  0.0  0.0   3128   896 ?        Ss   05:53   0:00 /init
+archana@EURLTP-380:~/linux_assignment$ kill -9 $(ps aux --sort=-%mem | sed -n '2p' | awk {'print $2'})
+-bash: kill: (289) - Operation not permitted
+5)
+archana@EURLTP-380:~/linux_assignment$ ip route
+default via 172.18.112.1 dev eth0 proto kernel
+172.18.112.0/20 dev eth0 proto kernel scope link src 172.18.125.144
+archana@EURLTP-380:~/linux_assignment$ ip route | grep default | awk '{print $3}' | sort
+172.18.112.1
