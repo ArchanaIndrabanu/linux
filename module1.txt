@@ -64,3 +64,4 @@ drwxr-xr-x 2 archana archana 4096 Feb 13 19:42 dir2
 -rw-r--r-- 1 archana archana    0 Feb 13 19:54 file2.txt
 -rw-r--r-- 1 archana archana    0 Feb 13 19:54 file3.txt
 
+
